@@ -6,7 +6,7 @@
 
 class Module:
 
-	def __init__(self):
+	def __init__(self, foo):
 		print("Initializing Youtube Plugin")
 
 
