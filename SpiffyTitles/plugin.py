@@ -79,7 +79,7 @@ class SpiffyTitles(callbacks.Plugin):
         Adds all handlers
         """
         print(getPlugins())
-        self.addYoutubeHandlers()
+        #self.addYoutubeHandlers()
         self.addIMDBHandlers()
         self.addImgurHandlers()
 
