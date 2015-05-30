@@ -6,9 +6,9 @@
 
 class Module:
 
-	def __init__():
+	def __init__(self):
 		print("Initializing Youtube Plugin")
 
 
-	def run():
+	def run(self):
 		print("Getting YouTube Title")
