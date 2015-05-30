@@ -42,19 +42,16 @@ PluginFolder = os.path.dirname(os.path.abspath(__file__)) + "/modules"
 MainModule = "__init__"
 
 def getPlugins():
-    plugins = []
-    possibleplugins = os.listdir(PluginFolder)
-    print(possibleplugins)
-    for i in possibleplugins:
-        location = os.path.join(PluginFolder, i)
-        if os.path.isdir(location) or not MainModule + ".py" in os.listdir(location):
-            continue
-        info = imp.find_module(MainModule, [location])
-        plugins.append({"name": i, "info": info})
-    return plugins
+    plugins = {}
 
-def loadPlugin(plugin):
-    return imp.load_module(MainModule, *plugin["info"])
+    # Load plugins
+    sys.path.insert(0, PluginFolder)
+    for f in os.listdir(PluginFolder):
+        fname, ext = os.path.splitext(f)
+        if ext == '.py':
+            mod = __import__(fname)
+            plugins[fname] = mod.Plugin()
+    sys.path.pop(0)
 
 class SpiffyTitles(callbacks.Plugin):
     """Displays link titles when posted in a channel"""
