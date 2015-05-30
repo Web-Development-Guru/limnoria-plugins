@@ -78,6 +78,7 @@ class SpiffyTitles(callbacks.Plugin):
         """
         Adds all handlers
         """
+        print(PluginFolder)
         print(getPlugins())
         #self.addYoutubeHandlers()
         self.addIMDBHandlers()
