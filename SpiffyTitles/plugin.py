@@ -14,7 +14,6 @@ import supybot.ircutils as ircutils
 import supybot.callbacks as callbacks
 
 import re
-import os
 import requests
 try:
     from urlparse import urlparse
@@ -24,8 +23,9 @@ except ImportError:
 from bs4 import BeautifulSoup
 import random
 import json
-import cgi
 import imp
+import os
+import cgi
 import datetime
 from jinja2 import Template
 from datetime import timedelta
@@ -36,6 +36,24 @@ try:
     _ = PluginInternationalization("SpiffyTitles")
 except ImportError:
     _ = lambda x: x
+
+
+PluginFolder = "./plugins"
+MainModule = "__init__"
+
+def getPlugins():
+    plugins = []
+    possibleplugins = os.listdir(PluginFolder)
+    for i in possibleplugins:
+        location = os.path.join(PluginFolder, i)
+        if not os.path.isdir(location) or not MainModule + ".py" in os.listdir(location):
+            continue
+        info = imp.find_module(MainModule, [location])
+        plugins.append({"name": i, "info": info})
+    return plugins
+
+def loadPlugin(plugin):
+    return imp.load_module(MainModule, *plugin["info"])
 
 class SpiffyTitles(callbacks.Plugin):
     """Displays link titles when posted in a channel"""
@@ -56,25 +74,11 @@ class SpiffyTitles(callbacks.Plugin):
 
         self.add_handlers()
 
-    def getPlugins():
-        plugins = []
-        possibleplugins = os.listdir(PluginFolder)
-        for i in possibleplugins:
-            location = os.path.join(PluginFolder, i)
-            if not os.path.isdir(location) or not MainModule + ".py" in os.listdir(location):
-                continue
-            info = imp.find_module(MainModule, [location])
-            plugins.append({"name": i, "info": info})
-        return plugins
-
-    def loadPlugin(plugin):
-        return imp.load_module(MainModule, *plugin["info"])
-
     def add_handlers(self):
         """
         Adds all handlers
         """
-        print(self.getPlugins())
+        print(getPlugins())
         self.addYoutubeHandlers()
         self.addIMDBHandlers()
         self.addImgurHandlers()
