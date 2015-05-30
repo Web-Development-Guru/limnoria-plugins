@@ -50,7 +50,7 @@ def getPlugins():
         fname, ext = os.path.splitext(f)
         if ext == '.py':
             mod = __import__(fname)
-            plugins[fname] = mod.Plugin()
+            plugins[fname] = mod.Module()
     sys.path.pop(0)
 
 class SpiffyTitles(callbacks.Plugin):
