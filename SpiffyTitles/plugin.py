@@ -38,7 +38,7 @@ except ImportError:
     _ = lambda x: x
 
 
-PluginFolder = os.path.dirname(os.path.abspath(__file__)) + "/plugins"
+PluginFolder = os.path.dirname(os.path.abspath(__file__)) + "/modules"
 MainModule = "__init__"
 
 def getPlugins():
