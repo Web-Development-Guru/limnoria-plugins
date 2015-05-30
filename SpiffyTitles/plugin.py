@@ -23,7 +23,7 @@ except ImportError:
 from bs4 import BeautifulSoup
 import random
 import json
-import imp
+import sys
 import os
 import cgi
 import datetime
