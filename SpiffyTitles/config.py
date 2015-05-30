@@ -54,7 +54,7 @@ conf.registerGlobalValue(SpiffyTitles.handlers.default, 'Template',
 # Youtube API
 conf.registerGlobalValue(SpiffyTitles.handlers.youtube, 'DeveloperKey',
     registry.String("", _("""Youtube Developer Key - required for the Youtube
-    handler.""", private=True)))
+    handler."""), private=True))
 
 conf.registerGlobalValue(SpiffyTitles.handlers.youtube, 'Template',
     registry.String("""^ {{title}} :: Duration: {{duration}} :: Views:
