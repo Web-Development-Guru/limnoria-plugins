@@ -31,8 +31,6 @@ from jinja2 import Template
 from datetime import timedelta
 import timeout_decorator
 
-from local import *
-
 try:
     from supybot.i18n import PluginInternationalization
     _ = PluginInternationalization("SpiffyTitles")
