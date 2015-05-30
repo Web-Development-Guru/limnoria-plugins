@@ -44,6 +44,7 @@ MainModule = "__init__"
 def getPlugins():
     plugins = []
     possibleplugins = os.listdir(PluginFolder)
+    print(possibleplugins)
     for i in possibleplugins:
         location = os.path.join(PluginFolder, i)
         if not os.path.isdir(location) or not MainModule + ".py" in os.listdir(location):
