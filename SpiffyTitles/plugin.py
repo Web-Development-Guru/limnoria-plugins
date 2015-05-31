@@ -64,6 +64,8 @@ class SpiffyTitles(callbacks.Plugin):
         """
         Adds all handlers
         """
+        import sys
+        print(sys.path)
         plugins_dirs = "handlers/"
         sys.path.extend(plugins_dirs.split(os.pathsep))
 
