@@ -115,7 +115,7 @@ class SpiffyTitles(callbacks.Plugin):
         title = None
 
         if is_channel and not is_ctcp:
-            channel_is_allowed = self.is_channel_allowed(channel)
+            channel_is_allowed = self.registryValue("enabled", channel)
             url = self.get_url_from_message(message)
 
             if url:
@@ -230,32 +230,6 @@ class SpiffyTitles(callbacks.Plugin):
     #    self.handlers["www.youtube.com"] = self.handler_youtube
     #    self.handlers["youtu.be"] = self.handler_youtube
     #    self.handlers["m.youtube.com"] = self.handler_youtube
-
-    def is_channel_allowed(self, channel):
-        """
-        Checks channel whitelist and blacklist to determine if the current
-        channel is allowed to display titles.
-        """
-        channel = channel.lower()
-        is_allowed = False
-        white_list = self.filter_empty(self.registryValue("channelWhitelist"))
-        black_list = self.filter_empty(self.registryValue("channelBlacklist"))
-        white_list_empty = len(white_list) == 0
-        black_list_empty = len(black_list) == 0
-
-        # Most basic case, which is that both white and blacklist are empty. Any channel is allowed.
-        if white_list_empty and black_list_empty:
-            is_allowed = True
-
-        # If there is a white list, blacklist is ignored.
-        if white_list:
-            is_allowed = channel in white_list
-
-        # Finally, check blacklist
-        if not white_list and black_list:
-            is_allowed = channel not in black_list
-
-        return is_allowed
 
     def filter_empty(self, input):
         """
