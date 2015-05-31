@@ -174,7 +174,7 @@ class SpiffyTitles(callbacks.Plugin):
 
                     irc.sendMsg(ircmsgs.privmsg(channel, formatted_title))
                 else:
-                    if self.registryValue("handlers.default.enabled", channel):
+                    if self.registryValue("handlers.default.enabled"):
                         self.log.error("SpiffyTitles: could not get a title for %s" % (url))
                     else:
                         self.log.error("SpiffyTitles: could not get a title for %s but default handler is disabled" % (url))
@@ -425,7 +425,7 @@ class SpiffyTitles(callbacks.Plugin):
         Default handler for websites
         """
 
-        if self.registryValue("handlers.default.enabled", channel):
+        if self.registryValue("handlers.default.enabled"):
             self.log.info("SpiffyTitles: calling default handler for %s" % (url))
             default_template = Template(self.registryValue("defaultTitleTemplate"))
             html = self.get_source_by_url(url)
