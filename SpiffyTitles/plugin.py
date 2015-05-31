@@ -23,7 +23,6 @@ except ImportError:
 from bs4 import BeautifulSoup
 import random
 import json
-import sys
 import os
 import cgi
 import datetime
@@ -41,17 +40,20 @@ except ImportError:
 PluginFolder = os.path.dirname(os.path.abspath(__file__)) + "/modules"
 MainModule = "__init__"
 
-def getPlugins():
-    plugins = {}
+def plugins_list(plugins_dirs):
+    """ List all python modules in specified plugins folders """
+    for path in plugins_dirs.split(os.pathsep):
+        for filename in os.listdir(path):
+            name, ext = os.path.splitext(filename)
+            if ext.endswith(".py"):
+                yield name
 
-    # Load plugins
-    sys.path.insert(0, PluginFolder)
-    for f in os.listdir(PluginFolder):
-        fname, ext = os.path.splitext(f)
-        if ext == '.py':
-            mod = __import__(fname)
-            plugins[fname] = mod.Module()
-    sys.path.pop(0)
+def import_plugins(plugins_dirs):
+    """ Import modules into specified environment (symbol table) """
+    for p in plugins_list(plugins_dirs):
+        m = __import__(p, env)
+        env[p] = m
+    return env
 
 class SpiffyTitles(callbacks.Plugin):
     """Displays link titles when posted in a channel"""
@@ -77,7 +79,7 @@ class SpiffyTitles(callbacks.Plugin):
         Adds all handlers
         """
         print(PluginFolder)
-        print(getPlugins())
+        print(import_plugins(PluginFolder))
         #self.addYoutubeHandlers()
         self.addIMDBHandlers()
         self.addImgurHandlers()
