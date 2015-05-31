@@ -21,7 +21,10 @@ try:
 except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
-import local
+try:
+    import handlers
+except ImportError:
+    print("Import Error on Handlers")
 import random
 import json
 import cgi
