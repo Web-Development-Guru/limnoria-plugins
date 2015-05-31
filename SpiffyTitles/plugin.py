@@ -153,7 +153,7 @@ class SpiffyTitles(callbacks.Plugin):
                         handler = self.handlers[domain]
                         title = handler(url, info)
                     else:
-                        if self.registryValue("handlers.default.enabled", channel):
+                        if self.registryValue("handlers.default.enabled"):
                             title = self.handler_default(url)
 
                 if title is not None and title:
