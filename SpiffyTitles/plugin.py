@@ -308,8 +308,8 @@ class SpiffyTitles(callbacks.Plugin):
         Uses the Youtube API to provide additional meta data about
         Youtube Video links posted.
         """
-        youtube_handler_enabled = self.registryValue("youtubeHandlerEnabled")
-        developer_key = self.registryValue("youtubeDeveloperKey")
+        youtube_handler_enabled = self.registryValue("handlers.youtube.enabled")
+        developer_key = self.registryValue("handlers.youtube.DeveloperKey")
 
         if not youtube_handler_enabled:
             return None
@@ -320,7 +320,7 @@ class SpiffyTitles(callbacks.Plugin):
 
         self.log.info("SpiffyTitles: calling Youtube handler for %s" % (url))
         video_id = self.get_video_id_from_url(url, domain)
-        yt_template = Template(self.registryValue("youtubeTitleTemplate"))
+        yt_template = Template(self.registryValue("handlers.youtube.Template"))
         title = ""
 
         if video_id:
