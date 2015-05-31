@@ -14,6 +14,10 @@ import supybot.ircutils as ircutils
 import supybot.callbacks as callbacks
 
 import re
+import os
+import sys
+import cgi
+import json
 import requests
 try:
     from urlparse import urlparse
@@ -28,9 +32,6 @@ try:
 except ImportError:
     print("Import Error on Handlers")
 import random
-import json
-import cgi
-import os
 import datetime
 from jinja2 import Template
 from datetime import timedelta
@@ -69,7 +70,6 @@ class SpiffyTitles(callbacks.Plugin):
         """
         Adds all handlers
         """
-        import sys
         print(sys.path)
 
         import_plugins(plugins_dirs, globals())
