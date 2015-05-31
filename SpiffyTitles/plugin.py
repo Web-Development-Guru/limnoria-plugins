@@ -21,10 +21,10 @@ try:
 except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
+from utils import import_plugins
 import random
 import json
 import cgi
-import imp
 import os
 import datetime
 from jinja2 import Template
@@ -40,21 +40,6 @@ except ImportError:
 
 PluginFolder = os.path.join(__file__, 'handlers')
 MainModule = "__init__"
-
-def getPlugins():
-    plugins = []
-    possibleplugins = os.listdir(PluginFolder)
-    for i in possibleplugins:
-        location = os.path.join(PluginFolder, i)
-        if not os.path.isdir(location) or not MainModule + ".py" in os.listdir(location):
-            continue
-        info = imp.find_module(MainModule, [location])
-        plugins.append({"name": i, "info": info})
-    return plugins
-
-def loadPlugin(plugin):
-    return imp.load_module(MainModule, *plugin["info"])
-
 
 class SpiffyTitles(callbacks.Plugin):
     """Displays link titles when posted in a channel"""
@@ -79,8 +64,11 @@ class SpiffyTitles(callbacks.Plugin):
         """
         Adds all handlers
         """
-        print(PluginFolder)
-        print(getPlugins())
+        plugins_dirs = "handlers/"
+        sys.path.extend(plugins_dirs.split(os.pathsep))
+
+        import_plugins(plugins_dirs, globals())
+        print(env)
         #self.addYoutubeHandlers()
         self.addIMDBHandlers()
         self.addImgurHandlers()
