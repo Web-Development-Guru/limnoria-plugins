@@ -22,7 +22,7 @@ except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
 try:
-    from local.handlers import import_plugins
+    from local import handlers
 except ImportError:
     print("Import Error on Handlers")
 import random
