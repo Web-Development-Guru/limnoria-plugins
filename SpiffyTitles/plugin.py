@@ -50,10 +50,11 @@ def plugins_list(plugins_dirs):
 
 def import_plugins(plugins_dirs):
     """ Import modules into specified environment (symbol table) """
+    ret = {}
     for p in plugins_list(plugins_dirs):
         m = __import__(p, env)
-        env[p] = m
-    return env
+        ret[p] = m
+    return ret
 
 class SpiffyTitles(callbacks.Plugin):
     """Displays link titles when posted in a channel"""
