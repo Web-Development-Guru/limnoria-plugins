@@ -22,6 +22,8 @@ except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
 try:
+    plugins_dirs = "handlers/"
+    sys.path.extend(plugins_dirs.split(os.pathsep))
     from local.handlers import import_plugins
 except ImportError:
     print("Import Error on Handlers")
@@ -69,8 +71,6 @@ class SpiffyTitles(callbacks.Plugin):
         """
         import sys
         print(sys.path)
-        plugins_dirs = "handlers/"
-        sys.path.extend(plugins_dirs.split(os.pathsep))
 
         import_plugins(plugins_dirs, globals())
         print(env)
