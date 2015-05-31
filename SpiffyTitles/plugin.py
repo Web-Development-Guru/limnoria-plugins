@@ -22,7 +22,7 @@ except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
 try:
-    from handlers import youtube
+    from local.handlers import import_plugins
 except ImportError:
     print("Import Error on Handlers")
 import random
@@ -72,7 +72,7 @@ class SpiffyTitles(callbacks.Plugin):
         plugins_dirs = "handlers/"
         sys.path.extend(plugins_dirs.split(os.pathsep))
 
-        handlers.import_plugins(plugins_dirs, globals())
+        import_plugins(plugins_dirs, globals())
         print(env)
         #self.addYoutubeHandlers()
         self.addIMDBHandlers()
