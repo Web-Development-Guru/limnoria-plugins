@@ -24,10 +24,7 @@ try:
 except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
-try:
-    from .local.handlers import test
-except ImportError:
-    print("Import Error on Handlers")
+from local import handlers
 import random
 import datetime
 from jinja2 import Template
@@ -68,7 +65,7 @@ class SpiffyTitles(callbacks.Plugin):
         Adds all handlers
         """
 
-        test()
+        # test()
         #import_plugins(plugins_dirs, globals())
         print(env)
         #self.addYoutubeHandlers()
