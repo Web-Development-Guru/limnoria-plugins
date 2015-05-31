@@ -14,3 +14,6 @@ def import_plugins(plugins_dirs, env):
     for p in plugins_list(plugins_dirs):
         m = __import__(p, env)
         env[p] = m
+
+def test():
+    print("YEY")
