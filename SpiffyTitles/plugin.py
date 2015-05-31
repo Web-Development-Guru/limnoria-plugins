@@ -72,7 +72,7 @@ class SpiffyTitles(callbacks.Plugin):
         plugins_dirs = "handlers/"
         sys.path.extend(plugins_dirs.split(os.pathsep))
 
-        import_plugins(plugins_dirs, globals())
+        handlers.import_plugins(plugins_dirs, globals())
         print(env)
         #self.addYoutubeHandlers()
         self.addIMDBHandlers()
