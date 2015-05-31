@@ -21,7 +21,7 @@ try:
 except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
-from utils import import_plugins
+import local
 import random
 import json
 import cgi
