@@ -1,8 +1,8 @@
 import os
 import glob
 
-modules = glob.glob(os.path.dirname(__file__)+"/*.py")
-__all__ = [ os.path.basename(f)[:-3] for f in modules]
+#modules = glob.glob(os.path.dirname(__file__)+"/*.py")
+#__all__ = [ os.path.basename(f)[:-3] for f in modules]
 
 class HandlerMain:
-	self.__all__ = __all__
+	__all__ = [ os.path.basename(f)[:-3] for f in glob.glob(os.path.dirname(__file__)+"/*.py")]
