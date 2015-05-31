@@ -68,6 +68,7 @@ class SpiffyTitles(callbacks.Plugin):
 
         # test()
         #import_plugins(plugins_dirs, globals())
+        print(indiHandlers)
         handlers.test()
         #self.addYoutubeHandlers()
         self.addIMDBHandlers()
