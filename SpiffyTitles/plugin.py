@@ -25,6 +25,7 @@ except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
 from .local import handlers
+from .handlers import *
 import random
 import datetime
 from jinja2 import Template
