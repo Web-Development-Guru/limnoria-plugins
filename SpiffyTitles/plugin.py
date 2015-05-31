@@ -69,9 +69,8 @@ class SpiffyTitles(callbacks.Plugin):
         # test()
         #import_plugins(plugins_dirs, globals())
         print(HandlerMain.__all__)
-        print(dir(HandlerMain))
         handlers.test()
-        #self.addYoutubeHandlers()
+        self.addYoutubeHandlers()
         self.addIMDBHandlers()
         self.addImgurHandlers()
 
@@ -224,15 +223,15 @@ class SpiffyTitles(callbacks.Plugin):
         self.handlers["www.imdb.com"] = self.handler_imdb
         self.handlers["imdb.com"] = self.handler_imdb
 
-    #def addYoutubeHandlers(self):
-    #    """
-    #    Adds handlers for Youtube videos. The handler is matched based on the
-    #    domain used in the URL.
-    #    """
-    #    self.handlers["youtube.com"] = self.handler_youtube
-    #    self.handlers["www.youtube.com"] = self.handler_youtube
-    #    self.handlers["youtu.be"] = self.handler_youtube
-    #    self.handlers["m.youtube.com"] = self.handler_youtube
+    def addYoutubeHandlers(self):
+        """
+        Adds handlers for Youtube videos. The handler is matched based on the
+        domain used in the URL.
+        """
+        self.handlers["youtube.com"] = self.handler_youtube
+        self.handlers["www.youtube.com"] = self.handler_youtube
+        self.handlers["youtu.be"] = self.handler_youtube
+        self.handlers["m.youtube.com"] = self.handler_youtube
 
     def filter_empty(self, input):
         """
