@@ -52,7 +52,7 @@ def import_plugins(plugins_dirs):
     """ Import modules into specified environment (symbol table) """
     ret = {}
     for p in plugins_list(plugins_dirs):
-        m = __import__(p, env)
+        m = __import__(p)
         ret[p] = m
     return ret
 
