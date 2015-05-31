@@ -24,7 +24,7 @@ try:
 except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
-from local import handlers
+from .local import handlers
 import random
 import datetime
 from jinja2 import Template
@@ -67,7 +67,7 @@ class SpiffyTitles(callbacks.Plugin):
 
         # test()
         #import_plugins(plugins_dirs, globals())
-        print(env)
+        handlers.test()
         #self.addYoutubeHandlers()
         self.addIMDBHandlers()
         self.addImgurHandlers()
