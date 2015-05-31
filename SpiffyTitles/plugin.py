@@ -23,8 +23,9 @@ except ImportError:
 from bs4 import BeautifulSoup
 import random
 import json
-import os
 import cgi
+import imp
+import os
 import datetime
 from jinja2 import Template
 from datetime import timedelta
@@ -37,24 +38,23 @@ except ImportError:
     _ = lambda x: x
 
 
-PluginFolder = os.path.dirname(os.path.abspath(__file__)) + "/handlers"
+PluginFolder = os.path.join(__file__, 'handlers')
 MainModule = "__init__"
 
-def plugins_list(plugins_dirs):
-    """ List all python modules in specified plugins folders """
-    for path in plugins_dirs.split(os.pathsep):
-        for filename in os.listdir(path):
-            name, ext = os.path.splitext(filename)
-            if ext.endswith(".py"):
-                yield name
+def getPlugins():
+    plugins = []
+    possibleplugins = os.listdir(PluginFolder)
+    for i in possibleplugins:
+        location = os.path.join(PluginFolder, i)
+        if not os.path.isdir(location) or not MainModule + ".py" in os.listdir(location):
+            continue
+        info = imp.find_module(MainModule, [location])
+        plugins.append({"name": i, "info": info})
+    return plugins
 
-def import_plugins(plugins_dirs):
-    """ Import modules into specified environment (symbol table) """
-    ret = {}
-    for p in plugins_list(plugins_dirs):
-        m = __import__(p)
-        ret[p] = m
-    return ret
+def loadPlugin(plugin):
+    return imp.load_module(MainModule, *plugin["info"])
+
 
 class SpiffyTitles(callbacks.Plugin):
     """Displays link titles when posted in a channel"""
@@ -80,7 +80,7 @@ class SpiffyTitles(callbacks.Plugin):
         Adds all handlers
         """
         print(PluginFolder)
-        print(import_plugins(PluginFolder))
+        print(getPlugins())
         #self.addYoutubeHandlers()
         self.addIMDBHandlers()
         self.addImgurHandlers()
