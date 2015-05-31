@@ -15,7 +15,6 @@ import supybot.callbacks as callbacks
 
 import re
 import os
-import sys
 import cgi
 import json
 import requests
@@ -26,9 +25,7 @@ except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
 try:
-    plugins_dirs = "local/"
-    sys.path.extend(plugins_dirs.split(os.pathsep))
-    from local.handlers import import_plugins
+    from .local.handlers import import_plugins
 except ImportError:
     print("Import Error on Handlers")
 import random
@@ -44,8 +41,8 @@ except ImportError:
     _ = lambda x: x
 
 
-PluginFolder = os.path.join(__file__, 'handlers')
-MainModule = "__init__"
+# PluginFolder = os.path.join(__file__, 'handlers')
+# MainModule = "__init__"
 
 class SpiffyTitles(callbacks.Plugin):
     """Displays link titles when posted in a channel"""
@@ -70,7 +67,6 @@ class SpiffyTitles(callbacks.Plugin):
         """
         Adds all handlers
         """
-        print(sys.path)
 
         import_plugins(plugins_dirs, globals())
         print(env)
