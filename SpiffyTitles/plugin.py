@@ -26,7 +26,7 @@ except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
 try:
-    plugins_dirs = "handlers/"
+    plugins_dirs = "local/"
     sys.path.extend(plugins_dirs.split(os.pathsep))
     from local.handlers import import_plugins
 except ImportError:
