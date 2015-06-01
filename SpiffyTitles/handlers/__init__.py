@@ -1,5 +1,4 @@
-from os import path
+import os
 import glob
-
-modules = glob.glob(path.dirname(__file__)+"/*.py")
-__all__ = [ path.basename(f)[:-3] for f in modules]
+modules = glob.glob(os.path.dirname(__file__)+"/*.py")
+__all__ = [ os.path.basename(f)[:-3] for f in modules]
