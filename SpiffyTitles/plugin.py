@@ -18,7 +18,7 @@ import os
 import cgi
 import json
 import requests
-import importlib
+
 try:
     from urlparse import urlparse
     from urllib import urlencode
@@ -26,7 +26,7 @@ except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
 # from .local import handlers
-from . import handlers
+from .handlers import youtube, imdb
 import random
 import datetime
 from jinja2 import Template
@@ -74,9 +74,9 @@ class SpiffyTitles(callbacks.Plugin):
         #print(vars(handlers.HandlerMain))
         print(dir(handlers))
         print(handlers.__all__)
-        for name in handlers.__all__:
-            importlib.import_module('.handlers.' + name, self)
-            print(dir(handlers))
+        #for name in handlers.__all__:
+            #importlib.import_module('.handlers.' + name, self)
+        #    print(dir(handlers))
         #handlers.test()
         self.addYoutubeHandlers()
         self.addIMDBHandlers()
