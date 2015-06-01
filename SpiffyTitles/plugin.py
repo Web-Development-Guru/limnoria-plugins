@@ -25,7 +25,8 @@ except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
 # from .local import handlers
-from . import handlers
+#from . import handlers
+from .handlers import youtube
 import random
 import datetime
 from jinja2 import Template
@@ -71,11 +72,7 @@ class SpiffyTitles(callbacks.Plugin):
         #print(handlers.HandlerMain.__all__)
         #print(dir(handlers.HandlerMain))
         #print(vars(handlers.HandlerMain))
-        print(handlers.__spec__)
-        print(handlers.__package__)
-        print(handlers.__name__)
-        print(handlers.__loader__)
-        print(handlers.__file__)
+        print(dir(handlers))
         #handlers.test()
         self.addYoutubeHandlers()
         self.addIMDBHandlers()
