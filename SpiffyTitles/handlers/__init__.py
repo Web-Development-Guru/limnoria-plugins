@@ -1,6 +1,6 @@
 import os
 import glob
-from . import *
+from . import youtube
 
 def handlers():
 	lst = glob.glob(os.path.dirname(__file__)+"/*.py")
