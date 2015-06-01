@@ -1,7 +1,8 @@
 import os
 import glob
-import youtube
+#import .youtube
 
+__import__('youtube')
 def handlers():
 	lst = glob.glob(os.path.dirname(__file__)+"/*.py")
 	return [ os.path.basename(f)[:-3] for f in lst if not name.startswith('_')]
