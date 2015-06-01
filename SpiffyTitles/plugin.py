@@ -18,6 +18,7 @@ import os
 import cgi
 import json
 import requests
+import importlib
 try:
     from urlparse import urlparse
     from urllib import urlencode
@@ -74,7 +75,7 @@ class SpiffyTitles(callbacks.Plugin):
         print(dir(handlers))
         print(handlers.__all__)
         for name in handlers.__all__:
-            __import__('.handlers.' + name)
+            importlib.import_module('.handlers.' + name)
             print(dir(handlers))
         #handlers.test()
         self.addYoutubeHandlers()
