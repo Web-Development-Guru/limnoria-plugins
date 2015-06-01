@@ -27,7 +27,7 @@ except ImportError:
 from bs4 import BeautifulSoup
 # from .local import handlers
 del handlers
-from .handlers import youtube, imdb
+from . import hanlers.youtube, handlers.imdb
 import random
 import datetime
 from jinja2 import Template
