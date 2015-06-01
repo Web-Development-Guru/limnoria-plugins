@@ -4,7 +4,10 @@
 #handlers["youtu.be"] = self.handler_youtube
 #handlers["m.youtube.com"] = self.handler_youtube
 
-class Module:
+def Film:
+	print("MEOW")
+
+class IMDB:
 
 	def __init__(self):
 		print("Initializing IMDB Plugin")

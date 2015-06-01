@@ -4,7 +4,10 @@
 #handlers["youtu.be"] = self.handler_youtube
 #handlers["m.youtube.com"] = self.handler_youtube
 
-class Module:
+def YT:
+	print("HELLO")
+
+class YouTube:
 
 	def __init__(self):
 		print("Initializing Youtube Plugin")
