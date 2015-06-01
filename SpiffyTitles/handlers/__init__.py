@@ -1,9 +1,9 @@
 import os
 import glob
 
-def __dir__():
-	modules = glob.glob(os.path.dirname(__file__)+"/*.py")
-	return [ os.path.basename(f)[:-3] for f in modules]
+def handlers():
+	lst = glob.glob(os.path.dirname(__file__)+"/*.py")
+	return [ os.path.basename(f)[:-3] for f in lst if not name.startswith('_')]
 
 #for p in __all__:
 #	handles[p] = __import__(p)
