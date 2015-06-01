@@ -89,8 +89,8 @@ class SpiffyTitles(callbacks.Plugin):
         imgur API client
         """
         if self.imgur_client is None:
-            imgur_client_id = self.registryValue("handlersimgur.ClientID")
-            imgur_client_secret = self.registryValue("handlersimgur.ClientSecret")
+            imgur_client_id = self.registryValue("handlers.imgur.ClientID")
+            imgur_client_secret = self.registryValue("handlers.imgur.ClientSecret")
 
             if self.registryValue("imgurHandlerEnabled") and imgur_client_id and imgur_client_secret:
                 self.log.info("SpiffyTitles: enabling imgur handler")
