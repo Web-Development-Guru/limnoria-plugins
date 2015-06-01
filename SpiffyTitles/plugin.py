@@ -26,7 +26,7 @@ except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
 # from .local import handlers
-handlers = None
+del handlers
 from .handlers import youtube, imdb
 import random
 import datetime
