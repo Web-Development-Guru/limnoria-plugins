@@ -427,7 +427,7 @@ class SpiffyTitles(callbacks.Plugin):
 
         if self.registryValue("handlers.default.enabled"):
             self.log.info("SpiffyTitles: calling default handler for %s" % (url))
-            default_template = Template(self.registryValue("defaultTitleTemplate"))
+            default_template = Template(self.registryValue("handlers.default.Template"))
             html = self.get_source_by_url(url)
 
             if html is not None and html:
