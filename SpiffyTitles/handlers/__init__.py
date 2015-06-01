@@ -1,5 +1,6 @@
 import os
 import glob
+from . import *
 
 def handlers():
 	lst = glob.glob(os.path.dirname(__file__)+"/*.py")
