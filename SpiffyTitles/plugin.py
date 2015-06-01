@@ -72,7 +72,7 @@ class SpiffyTitles(callbacks.Plugin):
         #print(dir(handlers.HandlerMain))
         #print(vars(handlers.HandlerMain))
         print(dir(handlers))
-        handlers.youtube.YT()
+        print(handlers.__all__)
         #handlers.test()
         self.addYoutubeHandlers()
         self.addIMDBHandlers()
