@@ -9,7 +9,7 @@
 #	handles[p] = __import__(p)
 #print(dir(handles))
 
-class HandlerMain:
+#class HandlerMain:
 	#from . import *
-	__all__ = [ os.path.basename(f)[:-3] for f in glob.glob(os.path.dirname(__file__)+"/*.py")]
-	handles = [ __import__(p) for p in __all__ ]
+#	__all__ = [ os.path.basename(f)[:-3] for f in glob.glob(os.path.dirname(__file__)+"/*.py")]
+#	handles = [ __import__(p) for p in __all__ ]

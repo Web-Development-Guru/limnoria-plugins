@@ -25,7 +25,7 @@ except ImportError:
     from urllib.parse import urlencode, urlparse
 from bs4 import BeautifulSoup
 # from .local import handlers
-from . import handlers
+#from . import handlers
 import random
 import datetime
 from jinja2 import Template
@@ -41,6 +41,9 @@ except ImportError:
 
 # PluginFolder = os.path.join(__file__, 'handlers')
 # MainModule = "__init__"
+
+class HandlerManager:
+    from .handlers import *
 
 class SpiffyTitles(callbacks.Plugin):
     """Displays link titles when posted in a channel"""
@@ -69,8 +72,9 @@ class SpiffyTitles(callbacks.Plugin):
         # test()
         #import_plugins(plugins_dirs, globals())
         #print(handlers.HandlerMain.__all__)
-        print(dir(handlers.HandlerMain))
-        print(vars(handlers.HandlerMain))
+        #print(dir(handlers.HandlerMain))
+        #print(vars(handlers.HandlerMain))
+        print(dir(HandlerManager))
         #handlers.test()
         self.addYoutubeHandlers()
         self.addIMDBHandlers()
