@@ -76,7 +76,8 @@ class SpiffyTitles(callbacks.Plugin):
         for name in handlers.__all__:
             if name != '__init__':
                 print("Importing %s" % name)
-                mod = getattr(__import__('handlers.' + name, globals(), locals(), ['Init'], 1), name)
+                #mod = getattr(__import__('handlers.' + name, globals(), locals(), ['Init'], 1), name)
+                mod = __import__('handlers.' + name, globals(), locals(), [], 1)
                 print(dir(mod))
         #for name in handlers.__all__:
             #importlib.import_module('.handlers.' + name, self)
