@@ -75,7 +75,7 @@ class SpiffyTitles(callbacks.Plugin):
         print(handlers.__all__)
         for name in handlers.__all__:
             print("Importing %s" % name)
-            mod = __import__('.' + name, '.handlers')
+            mod = __import__('handlers.' + name)
             print(dir(mod))
         #for name in handlers.__all__:
             #importlib.import_module('.handlers.' + name, self)
