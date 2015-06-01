@@ -4,7 +4,7 @@
 #handlers["youtu.be"] = self.handler_youtube
 #handlers["m.youtube.com"] = self.handler_youtube
 
-def Film():
+def Init():
 	print("MEOW")
 
 class IMDB:
