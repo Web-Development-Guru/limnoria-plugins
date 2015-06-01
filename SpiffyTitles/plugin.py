@@ -74,7 +74,7 @@ class SpiffyTitles(callbacks.Plugin):
         print(dir(handlers))
         print(handlers.__all__)
         for name in handlers.__all__:
-            __import__('handlers.' + name)
+            __import__('.handlers.' + name)
             print(dir(handlers))
         #handlers.test()
         self.addYoutubeHandlers()
