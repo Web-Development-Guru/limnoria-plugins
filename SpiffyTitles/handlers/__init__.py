@@ -1,5 +1,6 @@
 import os
 import glob
+from . import imdb
 from . import *
 
 modules = glob.glob(os.path.dirname(__file__)+"/*.py")
